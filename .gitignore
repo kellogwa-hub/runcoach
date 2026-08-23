@@ -1,0 +1,2 @@
+# Local MCP configuration (contains API keys/tokens)
+.agents/mcp_config.json
