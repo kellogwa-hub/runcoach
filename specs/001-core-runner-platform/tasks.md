@@ -8,9 +8,9 @@
 
 **Purpose**: Project initialization, core dependencies, and environment configuration.
 
-- [ ] T001 Initialize Next.js 14+ App Router project structure in `package.json`, `next.config.mjs`, and `tailwind.config.js`
-- [ ] T002 [P] Install core dependencies (`@supabase/supabase-js`, `@supabase/ssr`, `@dnd-kit/core`, `@dnd-kit/sortable`, `@ducanh2912/next-pwa`, `lucide-react`) in `package.json`
-- [ ] T003 [P] Define TypeScript entity types matching data model in `src/types/index.ts`
+- [x] T001 Initialize Next.js 14+ App Router project structure in `package.json`, `next.config.mjs`, and `tailwind.config.js`
+- [x] T002 [P] Install core dependencies (`@supabase/supabase-js`, `@supabase/ssr`, `@dnd-kit/core`, `@dnd-kit/sortable`, `@ducanh2912/next-pwa`, `lucide-react`) in `package.json`
+- [x] T003 [P] Define TypeScript entity types matching data model in `src/types/index.ts`
 
 ---
 
@@ -18,11 +18,11 @@
 
 **Purpose**: Core infrastructure that MUST be completed before user stories can proceed.
 
-- [ ] T004 Create browser Supabase client initialization helper in `src/lib/supabase/client.ts`
-- [ ] T005 [P] Create server-side Supabase client helper using `@supabase/ssr` in `src/lib/supabase/server.ts`
-- [ ] T006 [P] Implement Supabase Auth session and RBAC route protection middleware in `src/lib/supabase/middleware.ts`
-- [ ] T007 Apply database DDL schema and strict RLS policies script in `specs/001-core-runner-platform/contracts/supabase-schema.sql`
-- [ ] T008 [P] Configure PWA Web App Manifest (`public/manifest.json`) and Service Worker wrapper in `next.config.mjs`
+- [x] T004 Create browser Supabase client initialization helper in `src/lib/supabase/client.ts`
+- [x] T005 [P] Create server-side Supabase client helper using `@supabase/ssr` in `src/lib/supabase/server.ts`
+- [x] T006 [P] Implement Supabase Auth session and RBAC route protection middleware in `src/lib/supabase/middleware.ts`
+- [x] T007 Apply database DDL schema and strict RLS policies script in `specs/001-core-runner-platform/contracts/supabase-schema.sql`
+- [x] T008 [P] Configure PWA Web App Manifest (`public/manifest.json`) and Service Worker wrapper in `next.config.mjs`
 
 ---
 
@@ -34,12 +34,12 @@
 
 ### Implementation for User Story 1
 
-- [ ] T009 [P] [US1] Create Auth Login page component in `src/app/auth/login/page.tsx`
-- [ ] T010 [P] [US1] Create Auth Signup page component in `src/app/auth/signup/page.tsx`
-- [ ] T011 [US1] Implement Role Selection onboarding page with two visual cards ("Saya Pelatih" and "Saya Pelari") and disabled Back button navigation in `src/app/onboarding/role/page.tsx`
-- [ ] T012 [US1] Implement Server Action for setting user role in `src/app/api/auth/role-selection/route.ts`
-- [ ] T013 [US1] Create static Terms of Service page with health/medical disclaimer in `src/app/terms/page.tsx`
-- [ ] T014 [P] [US1] Create static Privacy Policy page with health/medical disclaimer in `src/app/privacy/page.tsx`
+- [x] T009 [P] [US1] Create Auth Login page component in `src/app/auth/login/page.tsx`
+- [x] T010 [P] [US1] Create Auth Signup page component in `src/app/auth/signup/page.tsx`
+- [x] T011 [US1] Implement Role Selection onboarding page with two visual cards ("Saya Pelatih" and "Saya Pelari") and disabled Back button navigation in `src/app/onboarding/role/page.tsx`
+- [x] T012 [US1] Implement Server Action for setting user role in `src/app/api/auth/role-selection/route.ts`
+- [x] T013 [US1] Create static Terms of Service page with health/medical disclaimer in `src/app/terms/page.tsx`
+- [x] T014 [P] [US1] Create static Privacy Policy page with health/medical disclaimer in `src/app/privacy/page.tsx`
 
 **Checkpoint**: User Story 1 is complete. Users can authenticate, select roles, and get routed safely with full RLS protection.
 
@@ -53,14 +53,14 @@
 
 ### Implementation for User Story 2
 
-- [ ] T015 [P] [US2] Create Coach Web Dashboard layout shell in `src/app/dashboard/layout.tsx`
-- [ ] T016 [P] [US2] Implement Link Runner modal component (email input field + submit button) in `src/components/coach/RunnerModal.tsx`
-- [ ] T017 [US2] Implement Server Action to link runner email by updating `coach_id` in `src/app/api/coach/link-runner/route.ts`
-- [ ] T018 [P] [US2] Implement draggable workout block component using `@dnd-kit/sortable` in `src/components/coach/ScheduleBlock.tsx`
-- [ ] T019 [US2] Implement calendar grid container with `@dnd-kit/core` drop targets in `src/components/coach/Calendar.tsx`
-- [ ] T020 [US2] Implement Server Action to create schedule block in `src/app/api/schedules/create/route.ts`
-- [ ] T021 [US2] Implement Server Action to update schedule date on drag-and-drop in `src/app/api/schedules/reschedule/route.ts`
-- [ ] T022 [US2] Connect Coach Dashboard page to render calendar and trigger client-side toast notifications on CRUD actions in `src/app/dashboard/page.tsx`
+- [x] T015 [P] [US2] Create Coach Web Dashboard layout shell in `src/app/dashboard/layout.tsx`
+- [x] T016 [P] [US2] Implement Link Runner modal component (email input field + submit button) in `src/components/coach/RunnerModal.tsx`
+- [x] T017 [US2] Implement Server Action to link runner email by updating `coach_id` in `src/app/api/coach/link-runner/route.ts`
+- [x] T018 [P] [US2] Implement draggable workout block component using `@dnd-kit/sortable` in `src/components/coach/ScheduleBlock.tsx`
+- [x] T019 [US2] Implement calendar grid container with `@dnd-kit/core` drop targets in `src/components/coach/Calendar.tsx`
+- [x] T020 [US2] Implement Server Action to create schedule block in `src/app/api/schedules/create/route.ts`
+- [x] T021 [US2] Implement Server Action to update schedule date on drag-and-drop in `src/app/api/schedules/reschedule/route.ts`
+- [x] T022 [US2] Connect Coach Dashboard page to render calendar and trigger client-side toast notifications on CRUD actions in `src/app/dashboard/page.tsx`
 
 **Checkpoint**: User Story 2 is complete. Coaches can manage runners and schedule workouts via drag-and-drop.
 
@@ -74,11 +74,11 @@
 
 ### Implementation for User Story 3
 
-- [ ] T023 [P] [US3] Implement Unlinked Runner Empty State component ("Menunggu pelatih menautkan akun Anda.") in `src/components/runner/EmptyState.tsx`
-- [ ] T024 [P] [US3] Create Runner PWA home page fetching today's workout schedule in `src/app/pwa/home/page.tsx`
-- [ ] T025 [US3] Implement Runner Metric Input Form component using `<input inputmode="numeric">` for distance, duration, and heart rate in `src/components/runner/MetricForm.tsx`
-- [ ] T026 [US3] Implement Server Action to submit workout metrics in `src/app/api/runner/submit-metric/route.ts`
-- [ ] T027 [US3] Configure Supabase Realtime channel subscription on Coach Dashboard for instant metric submission updates in `src/components/coach/Calendar.tsx`
+- [x] T023 [P] [US3] Implement Unlinked Runner Empty State component ("Menunggu pelatih menautkan akun Anda.") in `src/components/runner/EmptyState.tsx`
+- [x] T024 [P] [US3] Create Runner PWA home page fetching today's workout schedule in `src/app/pwa/home/page.tsx`
+- [x] T025 [US3] Implement Runner Metric Input Form component using `<input inputmode="numeric">` for distance, duration, and heart rate in `src/components/runner/MetricForm.tsx`
+- [x] T026 [US3] Implement Server Action to submit workout metrics in `src/app/api/runner/submit-metric/route.ts`
+- [x] T027 [US3] Configure Supabase Realtime channel subscription on Coach Dashboard for instant metric submission updates in `src/components/coach/Calendar.tsx`
 
 **Checkpoint**: User Story 3 is complete. Runners can log metrics seamlessly and coaches see updates in real-time.
 
@@ -88,11 +88,11 @@
 
 **Purpose**: Skeleton UI components, sub-3-second load time optimization, and Vercel deployment configuration.
 
-- [ ] T028 [P] Create reusable Skeleton UI placeholder components (Card, Button, Calendar, Table) in `src/components/ui/Skeleton.tsx`
-- [ ] T029 [P] Implement Next.js `loading.tsx` skeleton fallbacks for Dashboard (`src/app/dashboard/loading.tsx`) and Root (`src/app/loading.tsx`)
-- [ ] T030 Optimize Supabase queries and bundle size to guarantee navigation load time is strictly under 3 seconds
-- [ ] T031 Configure environment variables and deployment pipeline for Vercel in `.env.example` and `README.md`
-- [ ] T032 Execute end-to-end quickstart validation scenarios per `quickstart.md`
+- [x] T028 [P] Create reusable Skeleton UI placeholder components (Card, Button, Calendar, Table) in `src/components/ui/Skeleton.tsx`
+- [x] T029 [P] Implement Next.js `loading.tsx` skeleton fallbacks for Dashboard (`src/app/dashboard/loading.tsx`) and Root (`src/app/loading.tsx`)
+- [x] T030 Optimize Supabase queries and bundle size to guarantee navigation load time is strictly under 3 seconds
+- [x] T031 Configure environment variables and deployment pipeline for Vercel in `.env.example` and `README.md`
+- [x] T032 Execute end-to-end quickstart validation scenarios per `quickstart.md`
 
 ---
 
