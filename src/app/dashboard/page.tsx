@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/client';
 import { UserProfile, WorkoutSchedule } from '@/types';
 import RunnerModal from '@/components/coach/RunnerModal';
 import Calendar from '@/components/coach/Calendar';
+import { TredictSyncButton } from '@/components/common/TredictSyncButton';
 
 export default function CoachDashboardPage() {
   const [runners, setRunners] = useState<UserProfile[]>([]);
@@ -96,6 +97,8 @@ export default function CoachDashboardPage() {
               )}
             </select>
           )}
+
+          <TredictSyncButton />
 
           <button
             onClick={() => setIsModalOpen(true)}

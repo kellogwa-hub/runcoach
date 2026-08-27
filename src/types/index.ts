@@ -38,3 +38,67 @@ export interface LinkRunnerResponse {
   runner?: UserProfile;
   error?: string;
 }
+
+export interface TredictIntegration {
+  id: string;
+  user_id: string;
+  encrypted_api_token: string;
+  connection_status: 'connected' | 'error' | 'disconnected';
+  last_synced_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export type PaceZoneName = 'E' | 'M' | 'T' | 'I' | 'R';
+
+export interface PaceZoneDetail {
+  name: string;
+  minPace: string;
+  maxPace: string;
+  unit: string;
+}
+
+export interface HrZoneDetail {
+  name: string;
+  minHr: number;
+  maxHr: number;
+  unit: string;
+}
+
+export interface IntensityZoneProfile {
+  id: string;
+  runner_id: string;
+  vdot?: number | null;
+  fthr?: number | null;
+  pace_zones: Record<PaceZoneName, PaceZoneDetail>;
+  hr_zones: Record<string, HrZoneDetail>;
+  created_at: string;
+  updated_at: string;
+}
+
+export type AtpPhaseName = 'Prep' | 'Base' | 'Build' | 'Peak' | 'Race' | 'Transition';
+
+export interface PeriodizationPhase {
+  id: string;
+  runner_id: string;
+  coach_id: string;
+  year: number;
+  week_number: number;
+  phase_name: AtpPhaseName;
+  notes?: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TrainingLoadMetric {
+  id: string;
+  runner_id: string;
+  date: string;
+  tss: number;
+  ctl: number; // Chronic Training Load (Fitness)
+  atl: number; // Acute Training Load (Fatigue)
+  tsb: number; // Training Stress Balance (Form)
+  source: 'tredict' | 'manual';
+  created_at: string;
+}
+
