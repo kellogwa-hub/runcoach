@@ -11,38 +11,48 @@ export default function LoginPage() {
   const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const supabase = createClient();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setErrorMsg('');
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    try {
+      const supabase = createClient();
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
 
-    if (error) {
-      setErrorMsg(error.message);
-      setLoading(false);
-      return;
-    }
-
-    if (data.user) {
-      const { data: profile } = await supabase
-        .from('profiles')
-        .select('role')
-        .eq('id', data.user.id)
-        .single();
-
-      if (!profile?.role) {
-        router.push('/onboarding/role');
-      } else if (profile.role === 'coach') {
-        router.push('/dashboard');
-      } else {
-        router.push('/pwa/home');
+      if (error) {
+        setErrorMsg(error.message || 'Terjadi kesalahan saat masuk');
+        setLoading(false);
+        return;
       }
+
+      if (data.user) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', data.user.id)
+          .single();
+
+        if (!profile?.role) {
+          router.push('/onboarding/role');
+        } else if (profile.role === 'coach') {
+          router.push('/dashboard');
+        } else {
+          router.push('/pwa/home');
+        }
+      }
+    } catch (err) {
+      console.error('[Login Error]', err);
+      setErrorMsg(
+        err instanceof Error
+          ? err.message
+          : 'Gagal terhubung ke server (Kesalahan Jaringan). Silakan periksa koneksi internet Anda.'
+      );
+      setLoading(false);
     }
   };
 

@@ -12,32 +12,41 @@ export default function SignupPage() {
   const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const supabase = createClient();
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setErrorMsg('');
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          full_name: fullName,
+    try {
+      const supabase = createClient();
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName,
+          },
         },
-      },
-    });
+      });
 
-    if (error) {
-      setErrorMsg(error.message);
+      if (error) {
+        setErrorMsg(error.message || 'Terjadi kesalahan saat pendaftaran');
+        setLoading(false);
+        return;
+      }
+
+      if (data.user) {
+        router.push('/onboarding/role');
+      }
+    } catch (err) {
+      console.error('[Signup Error]', err);
+      setErrorMsg(
+        err instanceof Error
+          ? err.message
+          : 'Gagal terhubung ke server (Kesalahan Jaringan). Silakan periksa koneksi internet Anda.'
+      );
       setLoading(false);
-      return;
-    }
-
-    if (data.user) {
-      // Automatic redirect to Role Selection Onboarding page
-      router.push('/onboarding/role');
     }
   };
 
